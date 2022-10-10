@@ -35,7 +35,8 @@
             </DataGrid>
 
             <Button Height="30" Width="50" Grid.Row="0" x:Name="ExportButton" Content="Export" Click="ExportData" Margin="15,5,320,5"/>
-            <Button Height="30" Width="80" Grid.Row="0" x:Name="ChooseFilesButton" Content="Choose files" Click="ChooseFiles" Margin="85,10,220,10"/>
+            <Button Height="30" Width="80" Grid.Row="0" x:Name="ChooseFilesButton" Content="Choose files" Click="button_ChooseFiles" Margin="85,10,220,10"/>
+            <TextBox x:Name="emptyDataMessage" Height="30" Width="150" BorderThickness="0" Text="Choose files to display" FontSize="14" IsReadOnly="True" Margin="192,10,43,10"/>
         </Grid>
 
         <oxyplot:PlotView Grid.Column="1" Model="{Binding PlotModel, UpdateSourceTrigger = PropertyChanged}"/>

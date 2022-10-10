@@ -82,7 +82,12 @@
         /// </summary>
         /// <param name="sender">Event sender.</param>
         /// <param name="eventArgs">Event arguments.</param>
-        public void ChooseFiles(object sender, RoutedEventArgs eventArgs)
+        public void button_ChooseFiles(object sender, RoutedEventArgs eventArgs)
+        {
+            this.ChooseFiles();
+        }
+
+        public void ChooseFiles()
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Multiselect = true;
@@ -92,6 +97,8 @@
                 this.UsersViewModel.LoadData(openFileDialog.FileNames);
                 this.usersGrid.ItemsSource = this.UsersViewModel.Users;
             }
+
+            this.emptyDataMessage.Text = string.Empty;
         }
     }
 }

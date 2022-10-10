@@ -15,14 +15,6 @@
         private List<UserInfo> users;
         private PlotModel plotModel;
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="UsersViewModel"/> class.
-        /// </summary>
-        public UsersViewModel()
-        {
-            this.InitializeViewModel(UserDataReader.GetUsersDataFromFiles(Directory.GetFiles("TestData")));
-        }
-
         /// <inheritdoc/>
         public event PropertyChangedEventHandler? PropertyChanged;
 
