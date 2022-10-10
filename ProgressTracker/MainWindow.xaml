@@ -1,0 +1,43 @@
+﻿<Window x:Class="ProgressTracker.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModel="clr-namespace:ProgressTracker.ViewModels"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+
+    <Grid
+        xmlns:oxyplot ="http://oxyplot.org/wpf">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="385"/>
+            <ColumnDefinition Width="500*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="500*"/>
+            </Grid.RowDefinitions>
+            <DataGrid Grid.Row="1" VirtualizingPanel.IsVirtualizing="False" IsReadOnly="True" x:Name="usersGrid" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="User name" Binding="{Binding Path = Name}"/>
+                    <DataGridTextColumn Header="Average steps" Binding="{Binding Path = AverageSteps}"/>
+                    <DataGridTextColumn Header="Best steps" Binding="{Binding Path = BestSteps}"/>
+                    <DataGridTextColumn Header="Worst steps" Binding="{Binding Path = WorstSteps}"/>
+                </DataGrid.Columns>
+
+
+                <DataGrid.Resources>
+                    <Style TargetType="DataGridRow">
+                        <EventSetter Event="MouseDown" Handler="ChangeSelectedUser"/>
+                    </Style>
+                </DataGrid.Resources>
+            </DataGrid>
+
+            <Button Height="30" Width="50" Grid.Row="0" x:Name="ExportButton" Content="Export" Click="ExportData" Margin="15,5,320,5"/>
+            <Button Height="30" Width="80" Grid.Row="0" x:Name="ChooseFilesButton" Content="Choose files" Click="ChooseFiles" Margin="85,10,220,10"/>
+        </Grid>
+
+        <oxyplot:PlotView Grid.Column="1" Model="{Binding PlotModel, UpdateSourceTrigger = PropertyChanged}"/>
+    </Grid>
+</Window>
